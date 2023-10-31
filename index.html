@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <style>
+        
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+          background-color: rgba(33, 161, 33, 0.835);
+          overflow-x: hidden;
+          font-family: 'Poppins', sans-serif;
+          
+        }
+        .primer_titulo{
+          color: white;
+        
+        }
+        header{
+            background-color:white;
+            position: relative;
+            top: 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 10px 5px 5px rgba(0,0,0,0.4);
+            padding-bottom: 20px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+
+            
+        }
+        header .contenedor{
+            width: 80%;
+            display: flex;
+        }
+        header .contenedor img{
+           margin: auto;
+            width: 80%;
+            
+        }
+
+        header .contenedor h3{
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+
+        }
+        
+        section{
+            width: 100vw;
+            padding: 50px 0;
+            flex-direction: column;
+            gap: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .carousel {
+        position: relative;
+        width: 70%;
+        height: 300px;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 10px 5px 5px rgba(0,0,0,0.4);
+        
+        }
+        button{
+            z-index: 20;
+            color: white;
+            background-color: gray;
+            border-radius: 50%;
+
+
+        }
+        .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.5s;
+        
+        
+        }
+
+        .slide.active {
+        opacity: 1;
+        }
+
+        img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        }
+
+        .overlay {
+        position: absolute;
+        bottom: 0; 
+        left: 0;
+        width: 100%;
+        height: 50%;
+        background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 100%);
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.5s;
+        backdrop-filter: blur(5px)  saturate(150%);
+        }
+        .slide p{
+          width: 80%;
+          text-align: center;
+        }
+        
+        .slide.active .overlay {
+        opacity: 1;
+        }
+
+        h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+        }
+
+        p {
+        font-size: 14px;
+        }
+        .prev,
+        .next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 10px 12px;
+        border: none;
+        
+        font-size: 18px;
+        cursor: pointer;
+        }
+
+        .prev {
+        left: 10px;
+        }
+
+        .next {
+        right: 10px; 
+        }
+        .imagenes{
+          display: flex;
+          justify-content: center;
+          gap: 10px;
+          align-items: center;
+        }
+        .imagenes img{
+          width: 50px;
+        }
+        .contenedor_imagen{
+          width: 300px;
+          position: absolute;
+        }
+        #limon{
+          top: 0  ;
+          left: 0;
+          transform: translateY(-60%);
+          
+          overflow-y: hidden;     }
+        #piña{
+          bottom: 0  ;
+          right: 0;
+          transform: translateY(50%);
+          
+        }
+        .sobre-nosotros{
+          position: relative;
+        }
+        .sobre-nosotros p{
+          text-align: justify;
+          width: 70%;
+          font-size: 25px;
+        }
+        .sobre-nosotros h1{
+          text-align: center;
+          font-size: 40px;
+        }
+        .sobre-nosotros li{
+          text-align: justify;
+          font-size: 15px;
+          color: green;
+        }
+        li span{
+          color: black;
+        }
+        .footer{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 20px;
+        }
+        .footer img{
+          width: 400px;
+        }
+        .btn-whatsapp {
+          display: inline-flex;
+          align-items: center;
+          padding: 12px 24px;  
+          border-radius: 4px;
+          background: #25D366;  
+          color: #fff;
+          font-size: 16px;
+          font-weight: bold;
+          transition: 0.3s ease;
+        }
+
+        .btn-whatsapp:hover {
+          background: #128C7E;
+        }
+
+        .btn-whatsapp i {
+          font-size: 24px;
+          margin-right: 8px;
+        }
+        #loom-companion-mv3{
+          display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="contenedor">
+            <img src="http://drive.google.com/uc?export=view&id=1hUzpBoQP-6DCMQ90rivsAAibVUWDzYcl" alt="">
+            <h3> Exportaciones</h3>
+        </div>
+        
+    </header>
+    <main>
+    <section >
+      
+        <div class="carousel">
+            <button class="prev">&#10094;</button> 
+            <button class="next">&#10095;</button>
+            <div class="slide active">
+                <img src="http://drive.google.com/uc?export=view&id=1LfNDQ9M5NBKZwRy5d8geK06sLnMhtmgk" alt="">
+                <div class="overlay">
+                  <h2>LIME TAHITI</h2>
+                  <p>Lemon is a citrus fruit,
+                    characterized by a strong
+                    acid taste, it has a spherical
+                    shape and is covered by a
+                    thick, smooth shell
+                  </p>
+                  <div class="imagenes">
+                    <img src="http://drive.google.com/uc?export=view&id=1MktRmlZiogs3wgvmvG0lHu89dFoEXDPM" alt="">
+                    <img src="assets/images-removebg-preview.png" alt="">
+                  </div>
+                </div>
+              </div>
+            <div class="slide " >
+              <img src="http://drive.google.com/uc?export=view&id=1CHonNqefLMM-A98a2tBSAkBOAxegP9o5" alt="">
+              <div class="overlay">
+                <h2>GOLDEN OR MD2
+                  PINEAPPLE</h2>
+                <p>Its skin is
+                  golden in color, the yellow
+                  pulp is compact, fibrous,
+                  juicy, aromatic and extra
+                  sweet,</p> 
+                  <div class="imagenes">
+                    <img src="http://drive.google.com/uc?export=view&id=1MktRmlZiogs3wgvmvG0lHu89dFoEXDPM" alt="">
+                    <img src="http://drive.google.com/uc?export=view&id=assets/1gF3GXmFdGj_n3TZjBg_lKuE82rM3_bI2" alt="">
+                  </div>
+              </div>
+            </div>
+          
+            <div class="slide">
+              <img src="http://drive.google.com/uc?export=view&id=1P-4044r3wLfB_tehva5nAa_DgJ-WbcpX" alt="">
+              <div class="overlay">
+                <h2>HARTON BANANA</h2>
+                <p>It is characterized by being a
+                  large and robust fruit with a
+                  thick skin. This variety is
+                  grown mainly at altitudes
+                  between 1 and 1000 m.a.s.l.</p>
+                  <div class="imagenes">
+                    <img src="http://drive.google.com/uc?export=view&id=1MktRmlZiogs3wgvmvG0lHu89dFoEXDPM" alt="">
+                    <img src="http://drive.google.com/uc?export=view&id=assets/1gF3GXmFdGj_n3TZjBg_lKuE82rM3_bI2" alt="">
+                  </div>
+              </div>
+              
+            </div>
+          
+            
+          
+            <div class="slide">
+              <img src="http://drive.google.com/uc?export=view&id=1SffCNeH3-_CRO3ioSo6dhh1Zp1BwzrDQ" alt="">
+              <div class="overlay">
+                <h2>HASS AVOCADO</h2>
+                <p>It is a fruit that can be peeled
+                  easily and has an excellent
+                  flavor. It is medium to large in
+                  size and weighs between 140
+                  and 360 grams</p>
+                  <div class="imagenes">
+                    <img src="http://drive.google.com/uc?export=view&id=1MktRmlZiogs3wgvmvG0lHu89dFoEXDPM" alt="">
+                    <img src="http://drive.google.com/uc?export=view&id=assets/1gF3GXmFdGj_n3TZjBg_lKuE82rM3_bI2" alt="">
+                  </div>
+              </div>
+            </div>
+          </div>
+    </section>
+    <section class="sobre-nosotros" style="background-color: white;">
+     <h1>About us & our products</h1>
+     
+
+     <p>We are a 100% Colombian company, formed
+      by a couple of entrepreneurs who provide
+      their services and knowledge in favor of
+      their clients for international negotiations,
+      strategic alliances, business opportunities
+      and export support for direct processed and
+      / or fresh agro-industrial producers.</p>
+
+      <ul>
+        <li><span>PRODUCTS DIRECTLY FROM THE COLOMBIAN FIELD WITH
+          TRACEABILITY AND QUALITY MONITORING.</span></li>
+        <li><span>HIGH QUALITY STANDARDS AND CUSTOMER REQUIREMENTS.</span></li>
+      </ul>
+      <div class="contenedor_imagen" id="limon">
+        <img src="http://drive.google.com/uc?export=view&id=1JwOIvVKxicUKWAfj6aPf27Uu_DIjO2KD" alt="" >
+      </div>
+     
+      <div class="contenedor_imagen" id="piña">
+        <img src="http://drive.google.com/uc?export=view&id=1bg1SQXEECizaKdD4utscPpM7hQQQsEJ7" alt="" >
+      </div>
+      
+      
+  
+    </section>
+    <div class="footer">
+      <img src="http://drive.google.com/uc?export=view&id=1hUzpBoQP-6DCMQ90rivsAAibVUWDzYcl" alt="">
+      <div class="caja_info">
+        <a href="https://wa.me/3044805568?text=Hola%2C%20quiero%20hacer%20una%20consulta" target="_blank">
+          <button class="btn-whatsapp">
+            <i class="fa-brands fa-whatsapp"></i> Chatea por WhatsApp 
+          </button>
+        </a>
+      </div>
+    </div>
+    </main>
+      <script>
+        let slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+
+        function showSlide(n) {
+        slides[currentSlide].classList.remove('active');
+        slides[n].classList.add('active');
+        currentSlide = n;
+        }
+
+        // // Actualizar slide cada 5 segundos
+        // setInterval(function() {
+        // let nextSlide = currentSlide + 1;
+        // if(nextSlide >= slides.length) {
+        //     nextSlide = 0;
+        // }
+
+        // showSlide(nextSlide);
+        // }, 20000);
+
+        const nextButton = document.querySelector('.next');
+        const prevButton = document.querySelector('.prev');
+
+        nextButton.addEventListener('click', () => {
+        let nextSlide = currentSlide + 1;
+        if(nextSlide >= slides.length) {
+            nextSlide = 0;
+        }
+
+        showSlide(nextSlide);
+        });
+
+        prevButton.addEventListener('click', () => {
+        let prevSlide = currentSlide - 1;
+        if(prevSlide < 0) {
+            prevSlide = slides.length - 1;
+        }
+        
+        showSlide(prevSlide);  
+        });
+      </script>
+</body>
+
+</html>
